@@ -1,0 +1,15 @@
+# This pod contains a postgres database
+
+version: "2"
+services:
+  dev-db:
+    image: postgres
+    container_name: local-postgres
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: dev_db_user
+      POSTGRES_PASSWORD: dev_db_pass
+      DB_NAME: dev_db
+    volumes:
+      - "./scripts/postgres:/docker-entrypoint-initdb.d/"

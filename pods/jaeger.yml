@@ -1,0 +1,8 @@
+# This pod contains JAEGER
+
+version: "2"
+services:
+  jaeger:
+    image: jaegertracing/all-in-one
+    container_name: jaeger
+    network_mode: "host"

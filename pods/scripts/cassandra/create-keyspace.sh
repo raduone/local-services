@@ -1,0 +1,6 @@
+#!/bin/bash
+
+CQL="CREATE KEYSPACE IF NOT EXISTS $KEYSPACE WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'} AND durable_writes = true;
+CREATE ROLE IF NOT EXISTS $KEYSPACE_USER WITH PASSWORD = '$KEYSPACE_PASSWORD' AND LOGIN = true;
+GRANT ALL PERMISSIONS on KEYSPACE $KEYSPACE to $KEYSPACE_USER;"
+echo  $CQL | cqlsh -u $CASSANDRA_USER -p $CASSANDRA_PASSWORD;

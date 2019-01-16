@@ -1,0 +1,26 @@
+version: "2"
+
+services:
+  cassandra:
+      container_name: local-cassandra
+      image: cassandra:latest
+      volumes:
+        - ./scripts/cassandra:/docker-entrypoint-initdb.d/
+      expose:
+        # Intra-node communication
+        - 7000
+        # TLS intra-node communication
+        - 7001
+        # JMX
+        - 7199
+        # CQL
+        - 9042
+        # Thrift service
+        - 9160
+      environment:
+            KEYSPACE: test
+            KEYSPACE_USER: user
+            KEYSPACE_PASSWORD: password
+            MAX_HEAP_SIZE: 512M
+            HEAP_NEWSIZE: 100M
+      network_mode: "host"

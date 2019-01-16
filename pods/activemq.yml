@@ -1,0 +1,7 @@
+version: "2"
+
+services:
+  activemq:
+    container_name: local-activemq
+    image: webcenter/activemq:latest
+    network_mode: host
